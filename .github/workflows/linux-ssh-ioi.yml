@@ -47,6 +47,8 @@ jobs:
         echo
         echo ########## ioi ID ##########
         echo $ID
+        echo
+        head -n 18 /home/ioi.log
     - name: Keep Running Ubuntu System and keepAlive
      # if: ${{ failure() }}
       run: sleep 6h
