@@ -50,3 +50,5 @@ jobs:
     - name: Keep Running Ubuntu System and keepAlive
      # if: ${{ failure() }}
       run: ./ioi -password=${IOI_PASSWORD} -tcp 22 -tcp 443
+      env:
+        IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
