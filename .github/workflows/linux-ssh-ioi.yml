@@ -42,6 +42,8 @@ jobs:
         sudo sysctl -w net.core.rmem_max=2500000 && sudo sysctl -p
         sudo nohup ./ioi > ioi.log &
         sleep 10s
+        ls -al
+        cat ioi.log
         passwd=`head -n 4 ioi.log | tail -n 1` && passwd=${passwd##*:} && passwd=${passwd% *}
         echo $passwd
         sudo curl -X PUT -d "proto=tcp&port=22&password=${passwd}" "127.0.0.1:10101/api/port"
