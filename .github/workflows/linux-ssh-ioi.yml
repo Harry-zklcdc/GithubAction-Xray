@@ -41,17 +41,11 @@ jobs:
         sudo chmod +x ./ioi
         sudo sysctl -w net.core.rmem_max=2500000 && sudo sysctl -p
         sudo nohup ./ioi > ioi.log 2>&1 &
+        sleep 10s
         sudo passwd=`head -n 4 ioi.log | tail -n 1` && passwd=${passwd##*:} && passwd=${passwd% *}
-        sudo ps aux | grep ioi
-        sudo echo $passwd
-        sleep 5s
         sudo curl -X PUT -d "proto=tcp&port=22&password=${passwd}" "127.0.0.1:10101/api/port"
         sudo curl -X PUT -d "proto=tcp&port=443&password=${passwd}" "127.0.0.1:10101/api/port"
         ID=`sudo head -n 3 ioi.log | sudo tail -n 1` && ID=${ID##*warn}
-        echo
-        echo ########## ioi ID ##########
-        echo $ID
-        echo
         head -n 18 ioi.log
     - name: Keep Running Ubuntu System and keepAlive
      # if: ${{ failure() }}
