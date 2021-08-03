@@ -43,6 +43,7 @@ jobs:
         sudo nohup ./ioi -password=${IOI_PASSWORD} -tcp 22 -tcp 443 > ioi.log  &
         sleep 10s
         head -n 18 ioi.log
+        ps aux | grep ioi
       env:
         IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
     - name: Keep Running Ubuntu System and keepAlive
