@@ -40,4 +40,11 @@ jobs:
         sudo wget -q -O ioi https://github.com/Harry-zklcdc/ioi/blob/master/ioi_linux_x64?raw=true
         sudo chmod +x ./ioi
         sudo sysctl -w net.core.rmem_max=2500000 && sudo sysctl -p
-        ./ioi -tcp 22 -tcp 443 
+        sudo nohup ./ioi -password=${IOI_PASSWORD} -tcp 22 -tcp 443 > ioi.log  &
+        sleep 10s
+        head -n 18 ioi.log
+      env:
+        IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
+    - name: Keep Running Ubuntu System and keepAlive
+     # if: ${{ failure() }}
+      run: sleep 6h
