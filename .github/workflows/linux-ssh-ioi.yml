@@ -44,7 +44,7 @@ jobs:
         sleep 10s
         head -n 18 ioi.log
         pid=`ps -ef | grep "ioi" | grep -v grep | awk '{print $2}'`
-        kill -9 $pid
+        sudo kill -9 $pid
       env:
         IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
     - name: Keep Running Ubuntu System and keepAlive
