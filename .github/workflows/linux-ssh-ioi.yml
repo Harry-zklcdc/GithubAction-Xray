@@ -42,7 +42,8 @@ jobs:
         sudo sysctl -w net.core.rmem_max=2500000 && sudo sysctl -p
         sudo screen -d -L -S ioi -m ./ioi -password=${IOI_PASSWORD} -tcp 22 -tcp 443
         sleep 10s
-        head -n 18 screenlog.*
+        ls
+        head -n 18 screenlog.0
       env:
         IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
     - name: Keep Running Ubuntu System and keepAlive
