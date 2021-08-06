@@ -42,7 +42,6 @@ jobs:
         sudo sysctl -w net.core.rmem_max=2500000 && sudo sysctl -p
         sudo screen -d -L -S ioi -m ./ioi -password=${IOI_PASSWORD} -tcp 22 -tcp 443
         sleep 10s
-        ls
         head -n 18 screenlog.0
       env:
         IOI_PASSWORD: ${{ secrets.IOI_PASSWORD }}
