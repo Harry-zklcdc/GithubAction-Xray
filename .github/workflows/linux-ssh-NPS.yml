@@ -1,8 +1,6 @@
 name: Ubuntu ssh Virtual Machine (NPS)
 on: 
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
 defaults:
   run:
     shell: bash
